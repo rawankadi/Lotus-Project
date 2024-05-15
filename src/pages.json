@@ -1,0 +1,86 @@
+[
+    {
+    "AboutUs":{
+        "pageId":"2",
+        "pageName":"AboutUs",
+        "title":"Here We Are!",
+        "Content":{
+            "description":[
+                "Welcome to",
+                "HIREZY Recruitment System!",
+                "Streamline your hiring process with our intuitive and efficient platform.",
+                "From posting job openings to managing candidates, our system simplifies every step of the recruitment journey.",
+                "Find top talent quickly and easily, track candidate progress effortlessly, and collaborate seamlessly with your hiring team.",
+                "Sign in now to discover the future of recruitment with HIREZY!"
+            ],
+            "titleBased":"Based in",
+            "based":"Majdal Shams, Israel.",
+            "titleEmail":"Contact",
+            "contactEmail":"rawankadi9@gmail.com"
+        },
+        "img":"../images/back.jpeg"
+
+    }},
+    {
+        "ContactUs": {
+            "pageId": "3",
+            "pageName": "ContactUs",
+            "title": "Contact Us",
+            "Content": [
+                {
+                    "id": 1,
+                    "cardHead": "Full Name",
+                    "cardInput": "text"
+                },
+                {
+                    "id": 2,
+                    "cardHead": "Email Address",
+                    "cardInput": "email"
+                },
+                {
+                    "id": 3,
+                    "cardHead": "Message",
+                    "cardInput": "textarea"
+                }
+            ],
+            "button": ["submit"],
+            "img": "../images/contact.png"
+        }
+    },
+    
+    {
+        "SignInPage": {
+          "pageId":"4",
+          "title": "Sign In",
+          "emailLabel": "Email Address",
+          "sendCodeButton": "Send Code",
+          "loginWithGoogle": "Log in with Google",
+          "createAccount": "Create Account (for Managers)",
+          "termsAndPrivacy": "By continuing, you agree to the Terms of Use and Privacy Policy."
+        }
+    },
+      
+    {
+        "Home": {
+          "pageId":"5",
+          "title": "Welcome",
+          "description": "Manage your account, contact us if you need assistance",
+          "services": [
+                {
+                  "title": "Dashboard",
+                  "icons": "dashboard.png"
+                },
+                {
+                  "title": "Recruitment",
+                  "icons": "recruitment.png"
+                },
+                {
+                  "title": "Timesheet",
+                  "icons": "timesheet.png"
+                }
+            ]
+      }
+    }
+      
+
+]

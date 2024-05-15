@@ -1,0 +1,92 @@
+
+*{
+  font-family:Poppins,sans-serif !important;
+  font-weight: 550;
+
+}
+
+body{
+  width: auto;
+  
+}
+
+.contact-container {
+  margin-bottom: 9%;
+  margin-left: 17%;
+  background-color: #3D5C85;
+  max-width: 800px; 
+  margin-top: 10%; /* Center the container horizontally */
+  padding: 25px; /* Add padding around the container */
+  border: 1px solid #3D5C85; /* Add border */
+  border-radius: 10px; /* Add border radius for rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle depth effect */
+}
+
+.contact-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin-right: 20px;
+}
+
+.contact-image {
+  flex: 1;
+  margin-top: 6px;
+  margin-left: 10px;
+}
+.img{
+  width: 90%;
+  height: 480px;
+  border-radius:  10px;
+
+}
+.content{
+  color: #00024B;
+
+}
+
+.contact-form {
+  flex: 0.8;
+}
+
+.contact-form h2 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  background-color: #3D5C85;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-top: 0px solid #3D5C85;
+  border-left: 0px solid #3D5C85;
+  border-right: 0px solid #3D5C85;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #00024B;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}

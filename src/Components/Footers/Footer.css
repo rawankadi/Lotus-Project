@@ -1,0 +1,20 @@
+@media screen and (min-width: 400px) {  body {
+.footer {
+  position:fixed;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  background-color: #f8f7f7;
+  text-align: center;
+  color: #3D5C85;
+
+  }
+  .sen{
+    margin-top: 5px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:small;
+    padding-top: 12px;
+  }
+
+}}
