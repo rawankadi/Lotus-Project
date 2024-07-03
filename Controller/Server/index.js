@@ -1,61 +1,86 @@
-const express = require("express");
+const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
+const nodemailer = require('nodemailer'); 
+const { getPagesByMenuId } = require('../../Module/menus');
+const { getPageById } = require('../../Module/pages');
+const { getFormById } = require('../../Module/formHasInput');
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-
 app.use(cors());
 app.use(express.json());
 
-
-const dataPath = path.join(__dirname, 'data.json');
-let jsonData = null;
-
-
-const sideBarPath = path.join(__dirname, 'sideBar.json');
-let sideBarData = null;
-
-
-fs.readFile(dataPath, 'utf8', (err, data) => {
-  if (err) {
-    console.error('Error reading the JSON file:', err);
-    return;
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'rawankadi9@gmail.com',
+    pass: 'jrzz dnow jdxr xkxr'
   }
-  jsonData = JSON.parse(data);
 });
 
-fs.readFile(sideBarPath, 'utf8', (err, data) => {
-  if (err) {
-    console.error('Error reading the sideBar JSON file:', err);
-    return;
+
+// Fetch all pages from MySQL
+app.get("/pages/:id", async(req, res) => {
+  const pageID = req.params.id;
+  try {
+    const pages = await getPageById(pageID);
+    console.log(pageID);
+    res.json(pages);
+  } catch (error) {
+    console.error('Error fetching Page By pageID:', error);
+    res.status(500).send('Server Error');
   }
-  sideBarData = JSON.parse(data);
 });
 
-app.get("/api/data/:window", (req, res) => {
-  const windowName = req.params.window;
-  const pageData = jsonData.find(page => page[windowName]);
-  
-  if (!pageData) {
-    res.status(404).send({ error: `${windowName} data not found` });
-    return;
+app.get('/menu/:id', async (req, res) => {
+  const menuID = req.params.id;
+  try {
+    const pages = await getPagesByMenuId(menuID);
+    console.log(menuID);
+    res.json(pages);
+  } catch (error) {
+    console.error('Error fetching menu By menuID:', error);
+    res.status(500).send('Server Error');
   }
-  res.json(pageData[windowName]);
 });
 
-app.get("/api/sideBar/:window", (req, res) => {
-  const windowName = req.params.window;
-  const pageData = sideBarData.find(page => page[windowName]);
-
-  if (!pageData) {
-    res.status(404).send({ error: `${windowName} data not found` });
-    return;
+app.get('/form/:id', async (req, res) => {
+  const pageID = req.params.id;
+  try {
+    const pages = await getFormById(pageID);
+    console.log(pageID);
+    res.json(pages);
+  } catch (error) {
+    console.error('Error fetching Form By pageID:', error);
+    res.status(500).send('Server Error');
   }
+});
 
-  res.json(pageData[windowName]);
+app.post('/send-email', (req, res) => {
+  const { name, email, message } = req.body;
+
+  console.log(`Received email data: Name: ${name}, Email: ${email}, Message: ${message}`); 
+
+  const mailOptions = {
+    from: email,
+    to: 'rawankadi9@gmail.com', 
+    subject: `New message from ${name}`,
+    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log('Error sending email:', error);
+      res.status(500).json({ success: false, message: 'Error sending email by Node.js.' });
+    } else {
+      console.log('Email sent: ' + info.response);
+      res.status(200).json({ success: true, message: 'Email sent successfully!' });
+    }
+  });
 });
 
 
